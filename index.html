@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khusi - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-light: #fbfaf7;
+            --bg-white: #ffffff;
+            --text-dark: #111827;
+            --text-gray: #6b7280;
+            --teal: #1f5f5b;
+            --yellow: #f5b041;
+            --coral: #ff6b6b;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            font-family: cursive; /* Approximating the handwritten logo */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text-dark);
+        }
+
+        .nav-links a.active {
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .nav-contact {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .phone-btn {
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            padding: 60px 0 100px;
+            position: relative;
+        }
+
+        .hero-left h1 {
+            font-size: 64px;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            color: var(--text-dark);
+        }
+
+        .hero-left .email {
+            color: var(--coral);
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 40px;
+        }
+
+        .experience-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .experience-badge h2 {
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        .experience-badge p {
+            font-size: 12px;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            line-height: 1.2;
+            width: 80px;
+        }
+
+        .hero-center {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Simulating the brush stroke with a CSS shape */
+        .brush-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 400px;
+            background-color: var(--teal);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            z-index: -1;
+        }
+
+        .hero-center img {
+            width: 100%;
+            max-width: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .hero-right {
+            padding-left: 40px;
+        }
+
+        .hero-right p {
+            color: var(--text-gray);
+            font-size: 16px;
+            margin-bottom: 60px;
+        }
+
+        .cert-badge {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cert-badge i {
+            font-size: 40px;
+            color: var(--text-dark);
+        }
+
+        .cert-badge p {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        /* --- Services Section --- */
+        .services-section {
+            background-color: var(--bg-white);
+            padding: 100px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .service-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .service-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: var(--bg-white);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .icon-box.teal { background-color: var(--teal); }
+        .icon-box.yellow { background-color: var(--yellow); }
+        .icon-box.coral { background-color: var(--coral); }
+
+        .service-info h3 { font-size: 18px; margin-bottom: 5px; }
+        .service-info p { font-size: 14px; color: var(--text-gray); }
+
+        .services-text h2 {
+            font-size: 40px;
+            margin-bottom: 30px;
+        }
+
+        .services-text p {
+            color: var(--text-gray);
+            margin-bottom: 40px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 50px;
+        }
+
+        .stat-item h4 {
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin: 0;
+        }
+
+        /* --- Experience Section --- */
+        .experience-section {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--border-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 10px;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--bg-white);
+            border: 3px solid;
+        }
+
+        .timeline-item:nth-child(1)::after { border-color: var(--teal); }
+        .timeline-item:nth-child(2)::after { border-color: var(--coral); }
+        .timeline-item:nth-child(3)::after { border-color: var(--yellow); }
+
+        .time-company, .role-desc {
+            width: 45%;
+        }
+
+        .time-company {
+            text-align: right;
+            padding-right: 30px;
+        }
+
+        .role-desc {
+            padding-left: 30px;
+        }
+
+        .time-company h4, .role-desc h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .time-company p.date, .role-desc p.desc {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* --- Works Section --- */
+        .works-section {
+            background-color: var(--bg-white);
+            padding: 100px 0;
+        }
+
+        .works-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+
+        .works-header a {
+            color: var(--coral);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .work-card {
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            height: 300px;
+            background-color: #f3f4f6; /* Placeholder */
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .work-card.app { background-color: #fef3c7; }
+        .work-card.web { background-color: #ccfbf1; }
+        .work-card.brand { background-color: #f3f4f6; }
+
+        .work-card h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            z-index: 1;
+        }
+
+        .work-card p {
+            font-size: 14px;
+            color: var(--text-gray);
+            z-index: 1;
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonials-section {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        .testi-subtitle {
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto 50px;
+            font-size: 14px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .testi-card {
+            background: var(--bg-white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            text-align: left;
+        }
+
+        .testi-card.active {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transform: scale(1.05);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .user-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .user-details h5 { font-size: 14px; }
+        .user-details p { font-size: 12px; color: var(--text-gray); margin: 0; }
+        
+        .testi-text {
+            font-size: 14px;
+            color: var(--text-gray);
+            font-style: italic;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--bg-white);
+            padding: 80px 0 30px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 80px;
+        }
+
+        .footer-left h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            max-width: 400px;
+        }
+
+        .footer-left p {
+            font-size: 24px;
+            font-weight: 500;
+        }
+        
+        .footer-left span {
+            color: var(--coral);
+        }
+
+        .footer-right {
+            display: flex;
+            gap: 60px;
+        }
+
+        .footer-col h5 {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col p, .footer-col a {
+            display: block;
+            color: var(--text-gray);
+            font-size: 14px;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+
+        /* Responsive Design basics */
+        @media (max-width: 992px) {
+            .hero { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .hero-right { padding-left: 0; }
+            .experience-badge { justify-content: center; }
+            .services-grid { grid-template-columns: 1fr; }
+            .timeline::before { left: 0; }
+            .timeline-item { flex-direction: column; }
+            .timeline-item::after { left: 0; }
+            .time-company, .role-desc { width: 100%; text-align: left; padding-left: 30px; padding-right: 0; margin-bottom: 10px; }
+            .works-grid, .testimonials-grid { grid-template-columns: 1fr; }
+            .testi-card.active { transform: none; }
+            .footer-top { flex-direction: column; gap: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <div class="logo">Khushi</div>
+            <div class="nav-links">
+                <a href="#" class="active">Services</a>
+                <a href="#">Works</a>
+                <a href="#">Notes</a>
+                <a href="#">Experience</a>
+            </div>
+            <div class="nav-contact">
+                <span>+880 16568 787</span>
+                <button class="phone-btn"><i class="fa-solid fa-phone"></i></button>
+            </div>
+        </nav>
+    </div>
+
+    <section class="hero container" id="home">
+        <div class="hero-left">
+            <h1>Hey There,<br>I'm Khusi</h1>
+            <a href="mailto:Khusi12@gmail.com" class="email">Khusi12@gmail.com</a>
+            <div class="experience-badge">
+                <h2>5</h2>
+                <p>Years<br>Experience</p>
+            </div>
+        </div>
+        <div class="hero-center">
+            <div class="brush-bg"></div>
+            <img src="https://img.freepik.com/premium-psd/beautiful-woman-model-transparent-background_777174-26890.jpg?w=360" alt="khushi Ara">
+        </div>
+        <div class="hero-right">
+            <p>I design beautifully simple things, And I love what I do.</p>
+            <div class="cert-badge">
+                <i class="fa-solid fa-tree"></i> <p>IDF Certified<br>Professional<br>WebDesigner</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section" id="services">
+        <div class="container services-grid">
+            <div class="service-cards">
+                <div class="service-card">
+                    <div class="icon-box teal"><i class="fa-solid fa-desktop"></i></div>
+                    <div class="service-info">
+                        <h3>Website Design</h3>
+                        <p>76 Projects</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="icon-box yellow"><i class="fa-solid fa-mobile-screen"></i></div>
+                    <div class="service-info">
+                        <h3>Mobile App Design</h3>
+                        <p>63 Projects</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="icon-box coral"><i class="fa-solid fa-pen-nib"></i></div>
+                    <div class="service-info">
+                        <h3>Brand Identity</h3>
+                        <p>47 Projects</p>
+                    </div>
+                </div>
+            </div>
+            <div class="services-text">
+                <h2>What do I help?</h2>
+                <p>I will help you with finding a solution and solve your problems. We use process design to create digital products. Besides that also help their business.</p>
+                <p>We use process design to create digital products. Besides that also help their business.</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <h4>285+</h4>
+                        <p>Project Completed</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>190+</h4>
+                        <p>Happy Clients</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience-section" id="experience">
+        <div class="container">
+            <h2 class="section-title">My Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time-company">
+                        <h4>Self-Employed</h4>
+                        <p class="date">Sep 2023 - Aug 2025</p>
+                    </div>
+                    <div class="role-desc">
+                        <h4>Visual Designer</h4>
+                        <p class="desc">A visual designer designs for a variety of platforms, which may include Internet and intranet sites, games, movies, kiosks and wearables. In short, they create the concepts.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-company">
+                        <h4>New Man Services</h4>
+                        <p class="date">Jun 17 - Mar 2025</p>
+                    </div>
+                    <div class="role-desc">
+                        <h4>UI/UX Designer</h4>
+                        <p class="desc">User interface design or user interface engineering is the design of user interfaces for machines and software, such as computers, home appliances, mobile devices.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-company">
+                        <h4>Global Solution</h4>
+                        <p class="date">Feb 2023 - Mar 2025</p>
+                    </div>
+                    <div class="role-desc">
+                        <h4>Sr. Product Designer</h4>
+                        <p class="desc">Find Product Photography Canada. Large Selection. Always Sale. Cheap Prices. Full Offer. Save Online. Compare Online. Simple Search. The Best Price.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="works-section" id="works">
+        <div class="container">
+            <div class="works-header">
+                <div>
+                    <h2 style="font-size: 36px; margin-bottom: 10px;">My Latest Works</h2>
+                    <p style="color: var(--text-gray);">Perfect solution for digital experience</p>
+                </div>
+                <a href="#">Explore More Works &rarr;</a>
+            </div>
+            <div class="works-grid">
+                <div class="work-card app">
+                    <h3>App Design</h3>
+                    <p>Food Delivery App</p>
+
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8SiSjElyMbskTR3i8S4A3BfbbtDOr5GURpg&s" style="object-fit: cover;" alt="">
+                </div>
+                <div class="work-card web">
+                    <h3>Web Design</h3>
+                    <p>Agency Website</p>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzhonj77UGu9Zyq32S1Wv_lrBUniV3fGE4yw&s" alt="" srcset="">
+                </div>
+                <div class="work-card brand">
+                    <h3>Brand Identity</h3>
+                    <p>Brand Package</p>
+                    <img src="https://assets.designhill.com/design-blog/wp-content/uploads/2024/03/A-Guide-to-Branding-Package-Pricing-amp-inclusions.jpg" alt="" srcset="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <h2 class="section-title" style="margin-bottom: 10px;">People talk about us</h2>
+            <p class="testi-subtitle">I got a job that was in accordance with the salary and field of work. The process of submitting an application was quite easy.</p>
+            
+            <div class="testimonials-grid">
+                <div class="testi-card">
+                    <p class="testi-text">"The results are simply spectacular. I couldn't be happier with the outcome."</p>
+                    <div class="user-info">
+                        <img src="https://ui-avatars.com/api/?name=Anamika+Sandula&background=random" alt="User">
+                        <div class="user-details">
+                            <h5>Anamika Sandula</h5>
+                            <p>CEO, TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card active">
+                    <p class="testi-text">"A complete search of the internet has found these results. satisfactory result is the most popular phrase on the web. You wouldn't really say 'find in web satisfying'"</p>
+                    <div class="user-info">
+                        <img src="https://ui-avatars.com/api/?name=John+Alendane&background=random" alt="User">
+                        <div class="user-details">
+                            <h5>John Alendane</h5>
+                            <p>Product Manager</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <p class="testi-text">"In complete search of the internet has found these results. satisfactory result is the most popular phrase."</p>
+                    <div class="user-info">
+                        <img src="https://ui-avatars.com/api/?name=Southor+Mokcos&background=random" alt="User">
+                        <div class="user-details">
+                            <h5>Southor Mokcos</h5>
+                            <p>Marketing Head</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-left">
+                    <h2>Let's make something amazing together.</h2>
+                    <p>Start by <span>saying hi</span></p>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-col">
+                        <h5>Information</h5>
+                        <p>145 Dhaka, FL 5467, Bangladesh</p>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Links</h5>
+                        <a href="#">Services</a>
+                        <a href="#">Works</a>
+                        <a href="#">Notes</a>
+                        <a href="#">Experience</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="logo" style="font-size: 20px;">Khusi</div>
+                <p>&copy; 2026 All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
